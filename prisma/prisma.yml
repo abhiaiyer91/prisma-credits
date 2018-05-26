@@ -1,0 +1,5 @@
+endpoint: https://us1.prisma.sh/abhi-aiyer/credits/dev
+datamodel: datamodel.graphql
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma

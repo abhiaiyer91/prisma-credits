@@ -1,0 +1,1870 @@
+# source: https://us1.prisma.sh/abhi-aiyer/credits/dev
+# timestamp: Fri May 25 2018 22:21:49 GMT-0700 (PDT)
+
+type AggregateCreditAccount {
+  count: Int!
+}
+
+type AggregatePrice {
+  count: Int!
+}
+
+type AggregatePricingTable {
+  count: Int!
+}
+
+type AggregateSku {
+  count: Int!
+}
+
+type AggregateTransaction {
+  count: Int!
+}
+
+type AggregateTransactionItem {
+  count: Int!
+}
+
+type AggregateTransactionUser {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type CreditAccount implements Node {
+  id: ID!
+  userId: ID!
+  balance: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""A connection to a list of items."""
+type CreditAccountConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CreditAccountEdge]!
+  aggregate: AggregateCreditAccount!
+}
+
+input CreditAccountCreateInput {
+  userId: ID!
+  balance: Int
+}
+
+"""An edge in a connection."""
+type CreditAccountEdge {
+  """The item at the end of the edge."""
+  node: CreditAccount!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CreditAccountOrderByInput {
+  id_ASC
+  id_DESC
+  userId_ASC
+  userId_DESC
+  balance_ASC
+  balance_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CreditAccountPreviousValues {
+  id: ID!
+  userId: ID!
+  balance: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CreditAccountSubscriptionPayload {
+  mutation: MutationType!
+  node: CreditAccount
+  updatedFields: [String!]
+  previousValues: CreditAccountPreviousValues
+}
+
+input CreditAccountSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CreditAccountSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CreditAccountSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CreditAccountSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CreditAccountWhereInput
+}
+
+input CreditAccountUpdateInput {
+  userId: ID
+  balance: Int
+}
+
+input CreditAccountWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CreditAccountWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CreditAccountWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CreditAccountWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  userId: ID
+
+  """All values that are not equal to given value."""
+  userId_not: ID
+
+  """All values that are contained in given list."""
+  userId_in: [ID!]
+
+  """All values that are not contained in given list."""
+  userId_not_in: [ID!]
+
+  """All values less than the given value."""
+  userId_lt: ID
+
+  """All values less than or equal the given value."""
+  userId_lte: ID
+
+  """All values greater than the given value."""
+  userId_gt: ID
+
+  """All values greater than or equal the given value."""
+  userId_gte: ID
+
+  """All values containing the given string."""
+  userId_contains: ID
+
+  """All values not containing the given string."""
+  userId_not_contains: ID
+
+  """All values starting with the given string."""
+  userId_starts_with: ID
+
+  """All values not starting with the given string."""
+  userId_not_starts_with: ID
+
+  """All values ending with the given string."""
+  userId_ends_with: ID
+
+  """All values not ending with the given string."""
+  userId_not_ends_with: ID
+  balance: Int
+
+  """All values that are not equal to given value."""
+  balance_not: Int
+
+  """All values that are contained in given list."""
+  balance_in: [Int!]
+
+  """All values that are not contained in given list."""
+  balance_not_in: [Int!]
+
+  """All values less than the given value."""
+  balance_lt: Int
+
+  """All values less than or equal the given value."""
+  balance_lte: Int
+
+  """All values greater than the given value."""
+  balance_gt: Int
+
+  """All values greater than or equal the given value."""
+  balance_gte: Int
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+}
+
+input CreditAccountWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+enum Interval {
+  MONTH
+  YEAR
+  DAY
+  HOUR
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createCreditAccount(data: CreditAccountCreateInput!): CreditAccount!
+  createPrice(data: PriceCreateInput!): Price!
+  createSku(data: SkuCreateInput!): Sku!
+  createPricingTable(data: PricingTableCreateInput!): PricingTable!
+  createTransactionUser(data: TransactionUserCreateInput!): TransactionUser!
+  createTransactionItem(data: TransactionItemCreateInput!): TransactionItem!
+  createTransaction(data: TransactionCreateInput!): Transaction!
+  updateCreditAccount(data: CreditAccountUpdateInput!, where: CreditAccountWhereUniqueInput!): CreditAccount
+  updateSku(data: SkuUpdateInput!, where: SkuWhereUniqueInput!): Sku
+  updatePricingTable(data: PricingTableUpdateInput!, where: PricingTableWhereUniqueInput!): PricingTable
+  updateTransaction(data: TransactionUpdateInput!, where: TransactionWhereUniqueInput!): Transaction
+  deleteCreditAccount(where: CreditAccountWhereUniqueInput!): CreditAccount
+  deleteSku(where: SkuWhereUniqueInput!): Sku
+  deletePricingTable(where: PricingTableWhereUniqueInput!): PricingTable
+  deleteTransaction(where: TransactionWhereUniqueInput!): Transaction
+  upsertCreditAccount(where: CreditAccountWhereUniqueInput!, create: CreditAccountCreateInput!, update: CreditAccountUpdateInput!): CreditAccount!
+  upsertSku(where: SkuWhereUniqueInput!, create: SkuCreateInput!, update: SkuUpdateInput!): Sku!
+  upsertPricingTable(where: PricingTableWhereUniqueInput!, create: PricingTableCreateInput!, update: PricingTableUpdateInput!): PricingTable!
+  upsertTransaction(where: TransactionWhereUniqueInput!, create: TransactionCreateInput!, update: TransactionUpdateInput!): Transaction!
+  updateManyCreditAccounts(data: CreditAccountUpdateInput!, where: CreditAccountWhereInput): BatchPayload!
+  updateManyPrices(data: PriceUpdateInput!, where: PriceWhereInput): BatchPayload!
+  updateManySkus(data: SkuUpdateInput!, where: SkuWhereInput): BatchPayload!
+  updateManyPricingTables(data: PricingTableUpdateInput!, where: PricingTableWhereInput): BatchPayload!
+  updateManyTransactionUsers(data: TransactionUserUpdateInput!, where: TransactionUserWhereInput): BatchPayload!
+  updateManyTransactionItems(data: TransactionItemUpdateInput!, where: TransactionItemWhereInput): BatchPayload!
+  updateManyTransactions(data: TransactionUpdateInput!, where: TransactionWhereInput): BatchPayload!
+  deleteManyCreditAccounts(where: CreditAccountWhereInput): BatchPayload!
+  deleteManyPrices(where: PriceWhereInput): BatchPayload!
+  deleteManySkus(where: SkuWhereInput): BatchPayload!
+  deleteManyPricingTables(where: PricingTableWhereInput): BatchPayload!
+  deleteManyTransactionUsers(where: TransactionUserWhereInput): BatchPayload!
+  deleteManyTransactionItems(where: TransactionItemWhereInput): BatchPayload!
+  deleteManyTransactions(where: TransactionWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Price {
+  count: Int
+  unit: PriceCode
+  interval: Interval
+  term: Term
+}
+
+enum PriceCode {
+  CREDIT
+  US_CENTS
+}
+
+"""A connection to a list of items."""
+type PriceConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [PriceEdge]!
+  aggregate: AggregatePrice!
+}
+
+input PriceCreateInput {
+  count: Int
+  unit: PriceCode
+  interval: Interval
+  term: Term
+}
+
+input PriceCreateOneInput {
+  create: PriceCreateInput
+}
+
+"""An edge in a connection."""
+type PriceEdge {
+  """The item at the end of the edge."""
+  node: Price!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum PriceOrderByInput {
+  count_ASC
+  count_DESC
+  unit_ASC
+  unit_DESC
+  interval_ASC
+  interval_DESC
+  term_ASC
+  term_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type PricePreviousValues {
+  count: Int
+  unit: PriceCode
+  interval: Interval
+  term: Term
+}
+
+type PriceSubscriptionPayload {
+  mutation: MutationType!
+  node: Price
+  updatedFields: [String!]
+  previousValues: PricePreviousValues
+}
+
+input PriceSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PriceSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PriceSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PriceSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: PriceWhereInput
+}
+
+input PriceUpdateDataInput {
+  count: Int
+  unit: PriceCode
+  interval: Interval
+  term: Term
+}
+
+input PriceUpdateInput {
+  count: Int
+  unit: PriceCode
+  interval: Interval
+  term: Term
+}
+
+input PriceUpdateOneInput {
+  create: PriceCreateInput
+  disconnect: Boolean
+  delete: Boolean
+  update: PriceUpdateDataInput
+  upsert: PriceUpsertNestedInput
+}
+
+input PriceUpsertNestedInput {
+  update: PriceUpdateDataInput!
+  create: PriceCreateInput!
+}
+
+input PriceWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PriceWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PriceWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PriceWhereInput!]
+  count: Int
+
+  """All values that are not equal to given value."""
+  count_not: Int
+
+  """All values that are contained in given list."""
+  count_in: [Int!]
+
+  """All values that are not contained in given list."""
+  count_not_in: [Int!]
+
+  """All values less than the given value."""
+  count_lt: Int
+
+  """All values less than or equal the given value."""
+  count_lte: Int
+
+  """All values greater than the given value."""
+  count_gt: Int
+
+  """All values greater than or equal the given value."""
+  count_gte: Int
+  unit: PriceCode
+
+  """All values that are not equal to given value."""
+  unit_not: PriceCode
+
+  """All values that are contained in given list."""
+  unit_in: [PriceCode!]
+
+  """All values that are not contained in given list."""
+  unit_not_in: [PriceCode!]
+  interval: Interval
+
+  """All values that are not equal to given value."""
+  interval_not: Interval
+
+  """All values that are contained in given list."""
+  interval_in: [Interval!]
+
+  """All values that are not contained in given list."""
+  interval_not_in: [Interval!]
+  term: Term
+
+  """All values that are not equal to given value."""
+  term_not: Term
+
+  """All values that are contained in given list."""
+  term_in: [Term!]
+
+  """All values that are not contained in given list."""
+  term_not_in: [Term!]
+}
+
+type PricingTable implements Node {
+  id: ID!
+  description: String
+  skus(where: SkuWhereInput, orderBy: SkuOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Sku!]
+  preferredSkus: [ID!]
+}
+
+"""A connection to a list of items."""
+type PricingTableConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [PricingTableEdge]!
+  aggregate: AggregatePricingTable!
+}
+
+input PricingTableCreateInput {
+  description: String
+  preferredSkus: PricingTableCreatepreferredSkusInput
+  skus: SkuCreateManyInput
+}
+
+input PricingTableCreatepreferredSkusInput {
+  set: [ID!]
+}
+
+"""An edge in a connection."""
+type PricingTableEdge {
+  """The item at the end of the edge."""
+  node: PricingTable!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum PricingTableOrderByInput {
+  id_ASC
+  id_DESC
+  description_ASC
+  description_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type PricingTablePreviousValues {
+  id: ID!
+  description: String
+  preferredSkus: [ID!]
+}
+
+type PricingTableSubscriptionPayload {
+  mutation: MutationType!
+  node: PricingTable
+  updatedFields: [String!]
+  previousValues: PricingTablePreviousValues
+}
+
+input PricingTableSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PricingTableSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PricingTableSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PricingTableSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: PricingTableWhereInput
+}
+
+input PricingTableUpdateInput {
+  description: String
+  preferredSkus: PricingTableUpdatepreferredSkusInput
+  skus: SkuUpdateManyInput
+}
+
+input PricingTableUpdatepreferredSkusInput {
+  set: [ID!]
+}
+
+input PricingTableWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PricingTableWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PricingTableWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PricingTableWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  skus_every: SkuWhereInput
+  skus_some: SkuWhereInput
+  skus_none: SkuWhereInput
+}
+
+input PricingTableWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  creditAccounts(where: CreditAccountWhereInput, orderBy: CreditAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CreditAccount]!
+  prices(where: PriceWhereInput, orderBy: PriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Price]!
+  skus(where: SkuWhereInput, orderBy: SkuOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Sku]!
+  pricingTables(where: PricingTableWhereInput, orderBy: PricingTableOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PricingTable]!
+  transactionUsers(where: TransactionUserWhereInput, orderBy: TransactionUserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TransactionUser]!
+  transactionItems(where: TransactionItemWhereInput, orderBy: TransactionItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TransactionItem]!
+  transactions(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transaction]!
+  creditAccount(where: CreditAccountWhereUniqueInput!): CreditAccount
+  sku(where: SkuWhereUniqueInput!): Sku
+  pricingTable(where: PricingTableWhereUniqueInput!): PricingTable
+  transaction(where: TransactionWhereUniqueInput!): Transaction
+  creditAccountsConnection(where: CreditAccountWhereInput, orderBy: CreditAccountOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CreditAccountConnection!
+  pricesConnection(where: PriceWhereInput, orderBy: PriceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PriceConnection!
+  skusConnection(where: SkuWhereInput, orderBy: SkuOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SkuConnection!
+  pricingTablesConnection(where: PricingTableWhereInput, orderBy: PricingTableOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PricingTableConnection!
+  transactionUsersConnection(where: TransactionUserWhereInput, orderBy: TransactionUserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TransactionUserConnection!
+  transactionItemsConnection(where: TransactionItemWhereInput, orderBy: TransactionItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TransactionItemConnection!
+  transactionsConnection(where: TransactionWhereInput, orderBy: TransactionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TransactionConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Sku implements Node {
+  id: ID!
+  price(where: PriceWhereInput): Price
+  description: String!
+  vendor: Vendors
+}
+
+"""A connection to a list of items."""
+type SkuConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [SkuEdge]!
+  aggregate: AggregateSku!
+}
+
+input SkuCreateInput {
+  description: String!
+  vendor: Vendors
+  price: PriceCreateOneInput
+}
+
+input SkuCreateManyInput {
+  create: [SkuCreateInput!]
+  connect: [SkuWhereUniqueInput!]
+}
+
+input SkuCreateOneInput {
+  create: SkuCreateInput
+  connect: SkuWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type SkuEdge {
+  """The item at the end of the edge."""
+  node: Sku!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum SkuOrderByInput {
+  id_ASC
+  id_DESC
+  description_ASC
+  description_DESC
+  vendor_ASC
+  vendor_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type SkuPreviousValues {
+  id: ID!
+  description: String!
+  vendor: Vendors
+}
+
+type SkuSubscriptionPayload {
+  mutation: MutationType!
+  node: Sku
+  updatedFields: [String!]
+  previousValues: SkuPreviousValues
+}
+
+input SkuSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [SkuSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [SkuSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [SkuSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: SkuWhereInput
+}
+
+input SkuUpdateDataInput {
+  description: String
+  vendor: Vendors
+  price: PriceUpdateOneInput
+}
+
+input SkuUpdateInput {
+  description: String
+  vendor: Vendors
+  price: PriceUpdateOneInput
+}
+
+input SkuUpdateManyInput {
+  create: [SkuCreateInput!]
+  connect: [SkuWhereUniqueInput!]
+  disconnect: [SkuWhereUniqueInput!]
+  delete: [SkuWhereUniqueInput!]
+  update: [SkuUpdateWithWhereUniqueNestedInput!]
+  upsert: [SkuUpsertWithWhereUniqueNestedInput!]
+}
+
+input SkuUpdateOneInput {
+  create: SkuCreateInput
+  connect: SkuWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: SkuUpdateDataInput
+  upsert: SkuUpsertNestedInput
+}
+
+input SkuUpdateWithWhereUniqueNestedInput {
+  where: SkuWhereUniqueInput!
+  data: SkuUpdateDataInput!
+}
+
+input SkuUpsertNestedInput {
+  update: SkuUpdateDataInput!
+  create: SkuCreateInput!
+}
+
+input SkuUpsertWithWhereUniqueNestedInput {
+  where: SkuWhereUniqueInput!
+  update: SkuUpdateDataInput!
+  create: SkuCreateInput!
+}
+
+input SkuWhereInput {
+  """Logical AND on all given filters."""
+  AND: [SkuWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [SkuWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [SkuWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  vendor: Vendors
+
+  """All values that are not equal to given value."""
+  vendor_not: Vendors
+
+  """All values that are contained in given list."""
+  vendor_in: [Vendors!]
+
+  """All values that are not contained in given list."""
+  vendor_not_in: [Vendors!]
+  price: PriceWhereInput
+}
+
+input SkuWhereUniqueInput {
+  id: ID
+}
+
+type Subscription {
+  creditAccount(where: CreditAccountSubscriptionWhereInput): CreditAccountSubscriptionPayload
+  price(where: PriceSubscriptionWhereInput): PriceSubscriptionPayload
+  sku(where: SkuSubscriptionWhereInput): SkuSubscriptionPayload
+  pricingTable(where: PricingTableSubscriptionWhereInput): PricingTableSubscriptionPayload
+  transactionUser(where: TransactionUserSubscriptionWhereInput): TransactionUserSubscriptionPayload
+  transactionItem(where: TransactionItemSubscriptionWhereInput): TransactionItemSubscriptionPayload
+  transaction(where: TransactionSubscriptionWhereInput): TransactionSubscriptionPayload
+}
+
+enum Term {
+  MONTHLY
+  YEARLY
+}
+
+type Transaction implements Node {
+  id: ID!
+  description: String
+  accountId: ID!
+  initiatedBy(where: TransactionUserWhereInput): TransactionUser!
+  total(where: PriceWhereInput): Price
+  status: TransactionStatusCodes!
+  statusMessage: String
+  transactionId: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  type: TransactionType!
+  items(where: TransactionItemWhereInput, orderBy: TransactionItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TransactionItem!]
+}
+
+"""A connection to a list of items."""
+type TransactionConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TransactionEdge]!
+  aggregate: AggregateTransaction!
+}
+
+input TransactionCreateInput {
+  description: String
+  accountId: ID!
+  status: TransactionStatusCodes!
+  statusMessage: String
+  transactionId: ID!
+  type: TransactionType!
+  initiatedBy: TransactionUserCreateOneInput!
+  total: PriceCreateOneInput
+  items: TransactionItemCreateManyInput
+}
+
+"""An edge in a connection."""
+type TransactionEdge {
+  """The item at the end of the edge."""
+  node: Transaction!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type TransactionItem {
+  sku(where: SkuWhereInput): Sku
+  count: Int
+}
+
+"""A connection to a list of items."""
+type TransactionItemConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TransactionItemEdge]!
+  aggregate: AggregateTransactionItem!
+}
+
+input TransactionItemCreateInput {
+  count: Int
+  sku: SkuCreateOneInput
+}
+
+input TransactionItemCreateManyInput {
+  create: [TransactionItemCreateInput!]
+}
+
+"""An edge in a connection."""
+type TransactionItemEdge {
+  """The item at the end of the edge."""
+  node: TransactionItem!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum TransactionItemOrderByInput {
+  count_ASC
+  count_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type TransactionItemPreviousValues {
+  count: Int
+}
+
+type TransactionItemSubscriptionPayload {
+  mutation: MutationType!
+  node: TransactionItem
+  updatedFields: [String!]
+  previousValues: TransactionItemPreviousValues
+}
+
+input TransactionItemSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TransactionItemSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TransactionItemSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TransactionItemSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: TransactionItemWhereInput
+}
+
+input TransactionItemUpdateInput {
+  count: Int
+  sku: SkuUpdateOneInput
+}
+
+input TransactionItemUpdateManyInput {
+  create: [TransactionItemCreateInput!]
+}
+
+input TransactionItemWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TransactionItemWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TransactionItemWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TransactionItemWhereInput!]
+  count: Int
+
+  """All values that are not equal to given value."""
+  count_not: Int
+
+  """All values that are contained in given list."""
+  count_in: [Int!]
+
+  """All values that are not contained in given list."""
+  count_not_in: [Int!]
+
+  """All values less than the given value."""
+  count_lt: Int
+
+  """All values less than or equal the given value."""
+  count_lte: Int
+
+  """All values greater than the given value."""
+  count_gt: Int
+
+  """All values greater than or equal the given value."""
+  count_gte: Int
+  sku: SkuWhereInput
+}
+
+enum TransactionOrderByInput {
+  id_ASC
+  id_DESC
+  description_ASC
+  description_DESC
+  accountId_ASC
+  accountId_DESC
+  status_ASC
+  status_DESC
+  statusMessage_ASC
+  statusMessage_DESC
+  transactionId_ASC
+  transactionId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  type_ASC
+  type_DESC
+}
+
+type TransactionPreviousValues {
+  id: ID!
+  description: String
+  accountId: ID!
+  status: TransactionStatusCodes!
+  statusMessage: String
+  transactionId: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  type: TransactionType!
+}
+
+enum TransactionStatusCodes {
+  PENDING
+  FAILED
+  SUCCEEDED
+}
+
+type TransactionSubscriptionPayload {
+  mutation: MutationType!
+  node: Transaction
+  updatedFields: [String!]
+  previousValues: TransactionPreviousValues
+}
+
+input TransactionSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TransactionSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TransactionSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TransactionSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: TransactionWhereInput
+}
+
+enum TransactionType {
+  PURCHASE
+  ADJUSTMENT
+  SPEND
+}
+
+input TransactionUpdateInput {
+  description: String
+  accountId: ID
+  status: TransactionStatusCodes
+  statusMessage: String
+  transactionId: ID
+  type: TransactionType
+  initiatedBy: TransactionUserUpdateOneInput
+  total: PriceUpdateOneInput
+  items: TransactionItemUpdateManyInput
+}
+
+type TransactionUser {
+  userId: ID!
+  email: String
+  name: String
+}
+
+"""A connection to a list of items."""
+type TransactionUserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TransactionUserEdge]!
+  aggregate: AggregateTransactionUser!
+}
+
+input TransactionUserCreateInput {
+  userId: ID!
+  email: String
+  name: String
+}
+
+input TransactionUserCreateOneInput {
+  create: TransactionUserCreateInput
+}
+
+"""An edge in a connection."""
+type TransactionUserEdge {
+  """The item at the end of the edge."""
+  node: TransactionUser!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum TransactionUserOrderByInput {
+  userId_ASC
+  userId_DESC
+  email_ASC
+  email_DESC
+  name_ASC
+  name_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type TransactionUserPreviousValues {
+  userId: ID!
+  email: String
+  name: String
+}
+
+type TransactionUserSubscriptionPayload {
+  mutation: MutationType!
+  node: TransactionUser
+  updatedFields: [String!]
+  previousValues: TransactionUserPreviousValues
+}
+
+input TransactionUserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TransactionUserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TransactionUserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TransactionUserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: TransactionUserWhereInput
+}
+
+input TransactionUserUpdateDataInput {
+  userId: ID
+  email: String
+  name: String
+}
+
+input TransactionUserUpdateInput {
+  userId: ID
+  email: String
+  name: String
+}
+
+input TransactionUserUpdateOneInput {
+  create: TransactionUserCreateInput
+  delete: Boolean
+  update: TransactionUserUpdateDataInput
+  upsert: TransactionUserUpsertNestedInput
+}
+
+input TransactionUserUpsertNestedInput {
+  update: TransactionUserUpdateDataInput!
+  create: TransactionUserCreateInput!
+}
+
+input TransactionUserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TransactionUserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TransactionUserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TransactionUserWhereInput!]
+  userId: ID
+
+  """All values that are not equal to given value."""
+  userId_not: ID
+
+  """All values that are contained in given list."""
+  userId_in: [ID!]
+
+  """All values that are not contained in given list."""
+  userId_not_in: [ID!]
+
+  """All values less than the given value."""
+  userId_lt: ID
+
+  """All values less than or equal the given value."""
+  userId_lte: ID
+
+  """All values greater than the given value."""
+  userId_gt: ID
+
+  """All values greater than or equal the given value."""
+  userId_gte: ID
+
+  """All values containing the given string."""
+  userId_contains: ID
+
+  """All values not containing the given string."""
+  userId_not_contains: ID
+
+  """All values starting with the given string."""
+  userId_starts_with: ID
+
+  """All values not starting with the given string."""
+  userId_not_starts_with: ID
+
+  """All values ending with the given string."""
+  userId_ends_with: ID
+
+  """All values not ending with the given string."""
+  userId_not_ends_with: ID
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+}
+
+input TransactionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [TransactionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [TransactionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [TransactionWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  accountId: ID
+
+  """All values that are not equal to given value."""
+  accountId_not: ID
+
+  """All values that are contained in given list."""
+  accountId_in: [ID!]
+
+  """All values that are not contained in given list."""
+  accountId_not_in: [ID!]
+
+  """All values less than the given value."""
+  accountId_lt: ID
+
+  """All values less than or equal the given value."""
+  accountId_lte: ID
+
+  """All values greater than the given value."""
+  accountId_gt: ID
+
+  """All values greater than or equal the given value."""
+  accountId_gte: ID
+
+  """All values containing the given string."""
+  accountId_contains: ID
+
+  """All values not containing the given string."""
+  accountId_not_contains: ID
+
+  """All values starting with the given string."""
+  accountId_starts_with: ID
+
+  """All values not starting with the given string."""
+  accountId_not_starts_with: ID
+
+  """All values ending with the given string."""
+  accountId_ends_with: ID
+
+  """All values not ending with the given string."""
+  accountId_not_ends_with: ID
+  status: TransactionStatusCodes
+
+  """All values that are not equal to given value."""
+  status_not: TransactionStatusCodes
+
+  """All values that are contained in given list."""
+  status_in: [TransactionStatusCodes!]
+
+  """All values that are not contained in given list."""
+  status_not_in: [TransactionStatusCodes!]
+  statusMessage: String
+
+  """All values that are not equal to given value."""
+  statusMessage_not: String
+
+  """All values that are contained in given list."""
+  statusMessage_in: [String!]
+
+  """All values that are not contained in given list."""
+  statusMessage_not_in: [String!]
+
+  """All values less than the given value."""
+  statusMessage_lt: String
+
+  """All values less than or equal the given value."""
+  statusMessage_lte: String
+
+  """All values greater than the given value."""
+  statusMessage_gt: String
+
+  """All values greater than or equal the given value."""
+  statusMessage_gte: String
+
+  """All values containing the given string."""
+  statusMessage_contains: String
+
+  """All values not containing the given string."""
+  statusMessage_not_contains: String
+
+  """All values starting with the given string."""
+  statusMessage_starts_with: String
+
+  """All values not starting with the given string."""
+  statusMessage_not_starts_with: String
+
+  """All values ending with the given string."""
+  statusMessage_ends_with: String
+
+  """All values not ending with the given string."""
+  statusMessage_not_ends_with: String
+  transactionId: ID
+
+  """All values that are not equal to given value."""
+  transactionId_not: ID
+
+  """All values that are contained in given list."""
+  transactionId_in: [ID!]
+
+  """All values that are not contained in given list."""
+  transactionId_not_in: [ID!]
+
+  """All values less than the given value."""
+  transactionId_lt: ID
+
+  """All values less than or equal the given value."""
+  transactionId_lte: ID
+
+  """All values greater than the given value."""
+  transactionId_gt: ID
+
+  """All values greater than or equal the given value."""
+  transactionId_gte: ID
+
+  """All values containing the given string."""
+  transactionId_contains: ID
+
+  """All values not containing the given string."""
+  transactionId_not_contains: ID
+
+  """All values starting with the given string."""
+  transactionId_starts_with: ID
+
+  """All values not starting with the given string."""
+  transactionId_not_starts_with: ID
+
+  """All values ending with the given string."""
+  transactionId_ends_with: ID
+
+  """All values not ending with the given string."""
+  transactionId_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  type: TransactionType
+
+  """All values that are not equal to given value."""
+  type_not: TransactionType
+
+  """All values that are contained in given list."""
+  type_in: [TransactionType!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [TransactionType!]
+  initiatedBy: TransactionUserWhereInput
+  total: PriceWhereInput
+  items_every: TransactionItemWhereInput
+  items_some: TransactionItemWhereInput
+  items_none: TransactionItemWhereInput
+}
+
+input TransactionWhereUniqueInput {
+  id: ID
+}
+
+enum Vendors {
+  ABHI
+}

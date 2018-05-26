@@ -1,0 +1,89 @@
+type CreditAccount {
+  id: ID! @unique
+  userId: ID!
+  balance: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum PriceCode {
+  CREDIT
+  US_CENTS
+}
+
+enum Interval {
+  MONTH
+  YEAR
+  DAY
+  HOUR
+}
+
+enum Term {
+  MONTHLY
+  YEARLY
+}
+
+type Price {
+  count: Int
+  unit: PriceCode
+  # If we were building a subscription product then
+  # these two fields would come in handy
+  interval: Interval
+  term: Term
+}
+
+enum Vendors {
+  ABHI
+}
+
+type Sku {
+  id: ID! @unique
+  price: Price
+  description: String!
+  vendor: Vendors
+}
+
+type PricingTable {
+  id: ID! @unique
+  description: String
+  skus: [Sku!]!
+  preferredSkus: [ID!]
+}
+
+type TransactionUser {
+  userId: ID!
+  email: String
+  name: String
+}
+
+enum TransactionStatusCodes {
+  PENDING
+  FAILED
+  SUCCEEDED
+}
+
+enum TransactionType {
+  PURCHASE
+  ADJUSTMENT
+  SPEND
+}
+
+type TransactionItem {
+  sku: Sku
+  count: Int
+}
+
+type Transaction {
+  id: ID! @unique
+  description: String
+  accountId: ID!
+  initiatedBy: TransactionUser!
+  total: Price
+  status: TransactionStatusCodes!
+  statusMessage: String
+  transactionId: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  type: TransactionType!
+  items: [TransactionItem!]!
+}
