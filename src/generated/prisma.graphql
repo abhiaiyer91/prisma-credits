@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/abhi-aiyer/credits/dev
-# timestamp: Sat May 26 2018 06:43:08 GMT-0700 (PDT)
+# timestamp: Sat May 26 2018 11:39:15 GMT-0700 (PDT)
 
 type AggregateCreditAccount {
   count: Int!
@@ -568,8 +568,9 @@ input PriceWhereInput {
 
 type PricingTable implements Node {
   id: ID!
+  name: String!
   description: String
-  skus(where: SkuWhereInput, orderBy: SkuOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Sku!]
+  skuIds: [ID!]
   preferredSkus: [ID!]
 }
 
@@ -584,12 +585,17 @@ type PricingTableConnection {
 }
 
 input PricingTableCreateInput {
+  name: String!
   description: String
+  skuIds: PricingTableCreateskuIdsInput
   preferredSkus: PricingTableCreatepreferredSkusInput
-  skus: SkuCreateManyInput
 }
 
 input PricingTableCreatepreferredSkusInput {
+  set: [ID!]
+}
+
+input PricingTableCreateskuIdsInput {
   set: [ID!]
 }
 
@@ -605,6 +611,8 @@ type PricingTableEdge {
 enum PricingTableOrderByInput {
   id_ASC
   id_DESC
+  name_ASC
+  name_DESC
   description_ASC
   description_DESC
   updatedAt_ASC
@@ -615,7 +623,9 @@ enum PricingTableOrderByInput {
 
 type PricingTablePreviousValues {
   id: ID!
+  name: String!
   description: String
+  skuIds: [ID!]
   preferredSkus: [ID!]
 }
 
@@ -659,12 +669,17 @@ input PricingTableSubscriptionWhereInput {
 }
 
 input PricingTableUpdateInput {
+  name: String
   description: String
+  skuIds: PricingTableUpdateskuIdsInput
   preferredSkus: PricingTableUpdatepreferredSkusInput
-  skus: SkuUpdateManyInput
 }
 
 input PricingTableUpdatepreferredSkusInput {
+  set: [ID!]
+}
+
+input PricingTableUpdateskuIdsInput {
   set: [ID!]
 }
 
@@ -717,6 +732,46 @@ input PricingTableWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
   description: String
 
   """All values that are not equal to given value."""
@@ -757,13 +812,11 @@ input PricingTableWhereInput {
 
   """All values not ending with the given string."""
   description_not_ends_with: String
-  skus_every: SkuWhereInput
-  skus_some: SkuWhereInput
-  skus_none: SkuWhereInput
 }
 
 input PricingTableWhereUniqueInput {
   id: ID
+  name: String
 }
 
 type Query {
@@ -795,6 +848,7 @@ type Query {
 
 type Sku implements Node {
   id: ID!
+  name: String!
   price(where: PriceWhereInput): Price
   description: String!
   vendor: Vendors
@@ -811,14 +865,10 @@ type SkuConnection {
 }
 
 input SkuCreateInput {
+  name: String!
   description: String!
   vendor: Vendors
   price: PriceCreateOneInput
-}
-
-input SkuCreateManyInput {
-  create: [SkuCreateInput!]
-  connect: [SkuWhereUniqueInput!]
 }
 
 input SkuCreateOneInput {
@@ -838,6 +888,8 @@ type SkuEdge {
 enum SkuOrderByInput {
   id_ASC
   id_DESC
+  name_ASC
+  name_DESC
   description_ASC
   description_DESC
   vendor_ASC
@@ -850,6 +902,7 @@ enum SkuOrderByInput {
 
 type SkuPreviousValues {
   id: ID!
+  name: String!
   description: String!
   vendor: Vendors
 }
@@ -894,24 +947,17 @@ input SkuSubscriptionWhereInput {
 }
 
 input SkuUpdateDataInput {
+  name: String
   description: String
   vendor: Vendors
   price: PriceUpdateOneInput
 }
 
 input SkuUpdateInput {
+  name: String
   description: String
   vendor: Vendors
   price: PriceUpdateOneInput
-}
-
-input SkuUpdateManyInput {
-  create: [SkuCreateInput!]
-  connect: [SkuWhereUniqueInput!]
-  disconnect: [SkuWhereUniqueInput!]
-  delete: [SkuWhereUniqueInput!]
-  update: [SkuUpdateWithWhereUniqueNestedInput!]
-  upsert: [SkuUpsertWithWhereUniqueNestedInput!]
 }
 
 input SkuUpdateOneInput {
@@ -923,18 +969,7 @@ input SkuUpdateOneInput {
   upsert: SkuUpsertNestedInput
 }
 
-input SkuUpdateWithWhereUniqueNestedInput {
-  where: SkuWhereUniqueInput!
-  data: SkuUpdateDataInput!
-}
-
 input SkuUpsertNestedInput {
-  update: SkuUpdateDataInput!
-  create: SkuCreateInput!
-}
-
-input SkuUpsertWithWhereUniqueNestedInput {
-  where: SkuWhereUniqueInput!
   update: SkuUpdateDataInput!
   create: SkuCreateInput!
 }
@@ -988,6 +1023,46 @@ input SkuWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
   description: String
 
   """All values that are not equal to given value."""
@@ -1043,6 +1118,7 @@ input SkuWhereInput {
 
 input SkuWhereUniqueInput {
   id: ID
+  name: String
 }
 
 type Subscription {

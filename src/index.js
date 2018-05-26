@@ -6,8 +6,10 @@ const server = new GraphQLServer({
   typeDefs: "src/schema/service-schema.graphql",
   resolvers,
   context: req => {
+    const headers = req && req.request && req.request.headers;
     return {
-      userId: req && req.request && req.request.headers.userid,
+      isModerator: headers.role === 'MODERATOR',
+      userId: headers.userid,
       dataAccess: new Prisma({
         typeDefs: "src/generated/prisma.graphql",
         endpoint: "https://us1.prisma.sh/abhi-aiyer/credits/dev"

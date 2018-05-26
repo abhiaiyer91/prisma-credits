@@ -38,6 +38,7 @@ enum Vendors {
 
 type Sku {
   id: ID! @unique
+  name: String! @unique
   price: Price
   description: String!
   vendor: Vendors
@@ -45,8 +46,9 @@ type Sku {
 
 type PricingTable {
   id: ID! @unique
+  name: String! @unique
   description: String
-  skus: [Sku!]!
+  skuIds: [ID!]!
   preferredSkus: [ID!]
 }
 
