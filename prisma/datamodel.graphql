@@ -1,6 +1,6 @@
 type CreditAccount {
   id: ID! @unique
-  userId: ID!
+  userId: ID! @unique
   balance: Int
   createdAt: DateTime!
   updatedAt: DateTime!

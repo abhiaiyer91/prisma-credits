@@ -1,13 +1,11 @@
 export default {
   Query: {
     getBalance: async (root, params, { dataAccess, userId }) => {
-      const accountArray = await dataAccess.query.creditAccounts({
+      const account = await dataAccess.query.creditAccount({
         where: {
           userId,
         }
       });
-
-      const account = accountArray && accountArray[0];
 
       return account && account.balance;
     }

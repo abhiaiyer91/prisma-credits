@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/abhi-aiyer/credits/dev
-# timestamp: Fri May 25 2018 22:21:49 GMT-0700 (PDT)
+# timestamp: Sat May 26 2018 06:43:08 GMT-0700 (PDT)
 
 type AggregateCreditAccount {
   count: Int!
@@ -290,6 +290,7 @@ input CreditAccountWhereInput {
 
 input CreditAccountWhereUniqueInput {
   id: ID
+  userId: ID
 }
 
 scalar DateTime

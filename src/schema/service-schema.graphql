@@ -1,13 +1,13 @@
 # import PricingTable from '../generated/prisma.graphql'
 # import TransactionItemCreateInput from '../generated/prisma.graphql'
-# import TransactionItem from '../generated/prisma.graphql'
+# import Price from '../generated/prisma.graphql'
 
 type Query {
   getBalance: Int
   # For a given pricing table id, we'll get the pricing table
   getPricingTable(pricingTableId: ID!): PricingTable
   # We'll use this to calculate a price for items a user wants to buy
-  preparePurchase(items: [TransactionItem]): Price
+  preparePurchase(items: [TransactionItemCreateInput]): Price
 }
 
 type Mutation {
