@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/abhi-aiyer/credits/dev
-# timestamp: Sat May 26 2018 11:39:15 GMT-0700 (PDT)
+# timestamp: Mon May 28 2018 20:51:20 GMT-0700 (PDT)
 
 type AggregateCreditAccount {
   count: Int!
@@ -1144,7 +1144,6 @@ type Transaction implements Node {
   total(where: PriceWhereInput): Price
   status: TransactionStatusCodes!
   statusMessage: String
-  transactionId: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
   type: TransactionType!
@@ -1166,7 +1165,6 @@ input TransactionCreateInput {
   accountId: ID!
   status: TransactionStatusCodes!
   statusMessage: String
-  transactionId: ID!
   type: TransactionType!
   initiatedBy: TransactionUserCreateOneInput!
   total: PriceCreateOneInput
@@ -1323,8 +1321,6 @@ enum TransactionOrderByInput {
   status_DESC
   statusMessage_ASC
   statusMessage_DESC
-  transactionId_ASC
-  transactionId_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -1339,7 +1335,6 @@ type TransactionPreviousValues {
   accountId: ID!
   status: TransactionStatusCodes!
   statusMessage: String
-  transactionId: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
   type: TransactionType!
@@ -1401,7 +1396,6 @@ input TransactionUpdateInput {
   accountId: ID
   status: TransactionStatusCodes
   statusMessage: String
-  transactionId: ID
   type: TransactionType
   initiatedBy: TransactionUserUpdateOneInput
   total: PriceUpdateOneInput
@@ -1837,46 +1831,6 @@ input TransactionWhereInput {
 
   """All values not ending with the given string."""
   statusMessage_not_ends_with: String
-  transactionId: ID
-
-  """All values that are not equal to given value."""
-  transactionId_not: ID
-
-  """All values that are contained in given list."""
-  transactionId_in: [ID!]
-
-  """All values that are not contained in given list."""
-  transactionId_not_in: [ID!]
-
-  """All values less than the given value."""
-  transactionId_lt: ID
-
-  """All values less than or equal the given value."""
-  transactionId_lte: ID
-
-  """All values greater than the given value."""
-  transactionId_gt: ID
-
-  """All values greater than or equal the given value."""
-  transactionId_gte: ID
-
-  """All values containing the given string."""
-  transactionId_contains: ID
-
-  """All values not containing the given string."""
-  transactionId_not_contains: ID
-
-  """All values starting with the given string."""
-  transactionId_starts_with: ID
-
-  """All values not starting with the given string."""
-  transactionId_not_starts_with: ID
-
-  """All values ending with the given string."""
-  transactionId_ends_with: ID
-
-  """All values not ending with the given string."""
-  transactionId_not_ends_with: ID
   createdAt: DateTime
 
   """All values that are not equal to given value."""

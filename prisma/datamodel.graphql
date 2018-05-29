@@ -83,7 +83,6 @@ type Transaction {
   total: Price
   status: TransactionStatusCodes!
   statusMessage: String
-  transactionId: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
   type: TransactionType!

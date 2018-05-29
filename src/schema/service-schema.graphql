@@ -4,6 +4,12 @@
 # import SkuCreateInput from '../generated/prisma.graphql';
 # import SkuUpdateInput from '../generated/prisma.graphql';
 
+
+input PaymentMethodCreateInput {
+  cardId: String
+  token: ID
+}
+
 type Query {
   getBalance: Int
   # For a given pricing table id, we'll get the pricing table
@@ -13,10 +19,10 @@ type Query {
 }
 
 type Mutation {
-  # Purchase takes an array of Transaction Item Inputs, a description, a paymentMethod which will probably
+  # Purchase takes an array of skuIds, a description, a paymentMethod which will probably
   # correspond to some payment platform id, and an amount in US Cents
   # This will return the balance
-  purchase(items: [TransactionItemCreateInput], description: String!, paymentMethod: ID!, paymentAmount: Int): Int
+  purchase(skuIds: [ID], description: String!, paymentMethod: PaymentMethodCreateInput!): Int
 
   ### MODERATOR APIS
   createPricingTable(pricingTableId: ID!, description: String!, skuIds: [ID!]!): PricingTable
